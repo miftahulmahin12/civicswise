@@ -58,7 +58,7 @@ export default function PremiumPage() {
             </Button>
           </div>
 
-          <div className="relative flex flex-col gap-6 rounded-[var(--radius-xl)] border-2 border-brass-500 bg-surface p-8 shadow-[var(--shadow-raised)]">
+          <div className="glass-surface relative flex flex-col gap-6 rounded-[var(--radius-xl)] border-2 !border-brass-500 p-8">
             <Badge variant="brass" className="absolute -top-3 left-8">
               Most popular
             </Badge>
