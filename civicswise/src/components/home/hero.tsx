@@ -2,9 +2,10 @@
 
 import { useLayoutEffect, useRef } from "react";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
+import { HeroDemoCard } from "./hero-demo-card";
 
 export function Hero() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -86,45 +87,8 @@ export function Hero() {
           </dl>
         </div>
 
-        <div data-hero-card className="relative">
-          <div className="paper-card relative overflow-hidden rounded-[var(--radius-xl)] p-6 sm:p-8">
-            <div className="flex items-center justify-between border-b border-line pb-4">
-              <span className="text-xs font-medium uppercase tracking-wide text-ink-faint">
-                Question 7 of 20
-              </span>
-              <span className="rounded-full bg-teal-100 px-2.5 py-1 text-xs font-medium text-teal-900">
-                6 correct
-              </span>
-            </div>
-            <p className="mt-5 font-display text-xl leading-snug text-ink">
-              What do we call the first ten amendments to the Constitution?
-            </p>
-            <div className="mt-5 flex flex-col gap-2.5">
-              {[
-                { label: "The Federalist Papers", state: "default" },
-                { label: "The Bill of Rights", state: "correct" },
-                { label: "The Articles of Confederation", state: "default" },
-              ].map((option) => (
-                <div
-                  key={option.label}
-                  className={
-                    option.state === "correct"
-                      ? "flex items-center justify-between rounded-[var(--radius-md)] border border-teal-600 bg-teal-100 px-4 py-3 text-sm font-medium text-teal-900"
-                      : "flex items-center justify-between rounded-[var(--radius-md)] border border-line px-4 py-3 text-sm text-ink-soft"
-                  }
-                >
-                  {option.label}
-                  {option.state === "correct" && (
-                    <CheckCircle2 className="h-4 w-4 text-teal-700" />
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="absolute -bottom-5 -left-5 hidden rounded-[var(--radius-lg)] border border-line bg-surface px-4 py-3 shadow-[var(--shadow-raised)] sm:block">
-            <p className="text-xs text-ink-faint">Practice streak</p>
-            <p className="font-display text-lg font-medium text-ink">6 days</p>
-          </div>
+        <div data-hero-card>
+          <HeroDemoCard />
         </div>
       </div>
     </section>
