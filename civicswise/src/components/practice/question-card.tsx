@@ -26,7 +26,7 @@ export function QuestionCard({
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: -16 }}
         transition={{ duration: 0.25, ease: "easeOut" }}
-        className="paper-card rounded-[var(--radius-xl)] p-6 sm:p-8"
+        className="glass-surface rounded-[var(--radius-xl)] p-6 sm:p-8"
       >
         <div className="mb-5 flex flex-wrap items-center gap-2">
           {question.isDynamic && <Badge variant="warning">Dynamic answer</Badge>}
@@ -41,6 +41,7 @@ export function QuestionCard({
             const isSelected = record?.selectedAnswer === choice;
             const isCorrectChoice = choice === question.correctAnswer;
             const showFeedback = hasAnswered && (isSelected || isCorrectChoice);
+            const isWrongSelection = showFeedback && isSelected && !isCorrectChoice;
 
             return (
               <motion.button
@@ -51,27 +52,37 @@ export function QuestionCard({
                 disabled={hasAnswered}
                 onClick={() => onSelect(choice)}
                 whileTap={{ scale: hasAnswered ? 1 : 0.98 }}
+                animate={
+                  isWrongSelection
+                    ? { x: [0, -6, 5, -3, 2, 0] }
+                    : showFeedback && isCorrectChoice
+                    ? { scale: [1, 1.02, 1] }
+                    : { x: 0, scale: 1 }
+                }
+                transition={
+                  isWrongSelection
+                    ? { duration: 0.4, ease: "easeInOut" }
+                    : { duration: 0.3, ease: "easeOut" }
+                }
                 className={cn(
                   "flex items-center justify-between gap-3 rounded-[var(--radius-md)] border px-5 py-4 text-left text-sm font-medium transition-colors sm:text-base",
                   !hasAnswered &&
-                    "border-line-strong bg-surface text-ink hover:border-teal-500 hover:bg-teal-100/40",
+                    "border-line-strong bg-surface/70 text-ink hover:border-teal-500 hover:bg-teal-100/40 hover:-translate-y-0.5",
                   hasAnswered &&
                     !showFeedback &&
-                    "border-line bg-paper-dim text-ink-faint",
+                    "border-line bg-paper-dim/60 text-ink-faint",
                   showFeedback &&
                     isCorrectChoice &&
                     "border-success-600 bg-success-100 text-success-600",
-                  showFeedback &&
-                    isSelected &&
-                    !isCorrectChoice &&
-                    "border-danger-600 bg-danger-100 text-danger-600"
+                  isWrongSelection && "border-danger-600 bg-danger-100 text-danger-600"
                 )}
+                style={{ transitionProperty: "background-color, border-color, color, transform" }}
               >
                 <span>{choice}</span>
-                {showFeedback && isCorrectChoice && <Check className="h-5 w-5 shrink-0" />}
-                {showFeedback && isSelected && !isCorrectChoice && (
-                  <X className="h-5 w-5 shrink-0" />
+                {showFeedback && isCorrectChoice && (
+                  <Check className="h-5 w-5 shrink-0 animate-pop-in" />
                 )}
+                {isWrongSelection && <X className="h-5 w-5 shrink-0 animate-pop-in" />}
               </motion.button>
             );
           })}
@@ -86,7 +97,7 @@ export function QuestionCard({
               transition={{ duration: 0.2 }}
               className="overflow-hidden"
             >
-              <div className="mt-5 rounded-[var(--radius-md)] bg-paper-dim p-4 text-sm leading-relaxed text-ink-soft">
+              <div className="mt-5 rounded-[var(--radius-md)] bg-paper-dim/70 p-4 text-sm leading-relaxed text-ink-soft">
                 {record?.isCorrect ? (
                   <p>
                     <span className="font-medium text-success-600">Correct.</span> That matches
