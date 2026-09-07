@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import { AvatarInitials } from "@/components/ui/avatar-initials";
 import {
   Dialog,
   DialogContent,
@@ -16,6 +17,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { toast } from "sonner";
 import { categories } from "@/data/categories";
 import { questions } from "@/data/questions";
@@ -25,6 +33,7 @@ import {
   adminPracticePools,
   adminReviewQueue,
   adminUsers,
+  type AdminUser,
 } from "@/data/admin-mock";
 
 function StatBlock({ label, value }: { label: string; value: string | number }) {
@@ -259,6 +268,91 @@ export function ReviewQueueSection() {
   );
 }
 
+function ManageUserDialog({ user }: { user: AdminUser }) {
+  const [plan, setPlan] = useState(user.plan);
+  const [status, setStatus] = useState(user.status);
+
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="ghost" size="sm">
+          Manage
+        </Button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <div className="flex items-center gap-3">
+            <AvatarInitials name={user.name} />
+            <div>
+              <DialogTitle>{user.name}</DialogTitle>
+              <DialogDescription>{user.email}</DialogDescription>
+            </div>
+          </div>
+        </DialogHeader>
+
+        <div className="flex flex-col gap-4">
+          <div>
+            <Label htmlFor="user-plan">Plan</Label>
+            <Select value={plan} onValueChange={(v) => setPlan(v as AdminUser["plan"])}>
+              <SelectTrigger id="user-plan" className="mt-1.5">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Free">Free</SelectItem>
+                <SelectItem value="Premium">Premium</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div>
+            <Label htmlFor="user-status">Account status</Label>
+            <Select value={status} onValueChange={(v) => setStatus(v as AdminUser["status"])}>
+              <SelectTrigger id="user-status" className="mt-1.5">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Active">Active</SelectItem>
+                <SelectItem value="Invited">Invited</SelectItem>
+                <SelectItem value="Suspended">Suspended</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          <p className="rounded-[var(--radius-md)] bg-paper-dim p-3 text-xs leading-relaxed text-ink-faint">
+            This is a frontend preview — changes here aren't saved anywhere yet. Once a real
+            backend is connected, this panel will update the user's actual account.
+          </p>
+        </div>
+
+        <DialogFooter className="sm:justify-between">
+          <Button
+            variant="destructive"
+            size="sm"
+            onClick={() =>
+              toast.success(`${user.name} removed (demo)`, {
+                description: "No backend is connected yet, so nothing was actually deleted.",
+              })
+            }
+          >
+            <Trash2 className="h-4 w-4" />
+            Remove user
+          </Button>
+          <Button
+            variant="primary"
+            onClick={() =>
+              toast.success("Changes saved (demo)", {
+                description: `${user.name} is now set to ${plan} / ${status}.`,
+              })
+            }
+          >
+            Save changes
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
 export function UsersSection() {
   return (
     <div className="overflow-hidden rounded-[var(--radius-lg)] border border-line bg-surface shadow-[var(--shadow-soft)]">
@@ -294,9 +388,7 @@ export function UsersSection() {
                 </Badge>
               </td>
               <td className="px-4 py-3 text-right">
-                <Button variant="ghost" size="sm">
-                  Manage
-                </Button>
+                <ManageUserDialog user={user} />
               </td>
             </tr>
           ))}
