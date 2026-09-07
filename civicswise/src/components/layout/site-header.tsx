@@ -23,6 +23,9 @@ import {
 import { cn } from "@/lib/utils";
 import { learnLinks, practiceLinks, primaryNav } from "@/data/navigation";
 
+const navLinkClass =
+  "relative rounded-full px-4 py-2 text-sm font-medium text-ink-soft transition-colors after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[2px] after:origin-left after:scale-x-0 after:bg-teal-600 after:transition-transform after:duration-200 hover:text-ink hover:after:scale-x-100";
+
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -41,7 +44,7 @@ export function SiteHeader() {
     <header
       className={cn(
         "sticky top-0 z-40 border-b transition-colors duration-200",
-        scrolled ? "border-line bg-paper/90 backdrop-blur-md" : "border-transparent bg-paper"
+        scrolled ? "border-white/40 glass-surface !rounded-none" : "border-transparent bg-paper"
       )}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -52,8 +55,8 @@ export function SiteHeader() {
             <DropdownMenuTrigger asChild>
               <button
                 className={cn(
-                  "rounded-full px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:bg-paper-dim hover:text-ink",
-                  isActive("/practice") && "text-teal-700"
+                  navLinkClass,
+                  isActive("/practice") && "text-teal-700 after:scale-x-100"
                 )}
               >
                 Practice
@@ -75,7 +78,7 @@ export function SiteHeader() {
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button className="rounded-full px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:bg-paper-dim hover:text-ink">
+              <button className={navLinkClass}>
                 Learn
               </button>
             </DropdownMenuTrigger>
@@ -95,19 +98,13 @@ export function SiteHeader() {
 
           <Link
             href="/premium"
-            className={cn(
-              "rounded-full px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:bg-paper-dim hover:text-ink",
-              isActive("/premium") && "text-teal-700"
-            )}
+            className={cn(navLinkClass, isActive("/premium") && "text-teal-700 after:scale-x-100")}
           >
             Premium
           </Link>
           <Link
             href="/dashboard"
-            className={cn(
-              "rounded-full px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:bg-paper-dim hover:text-ink",
-              isActive("/dashboard") && "text-teal-700"
-            )}
+            className={cn(navLinkClass, isActive("/dashboard") && "text-teal-700 after:scale-x-100")}
           >
             Dashboard
           </Link>
