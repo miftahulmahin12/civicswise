@@ -1,0 +1,194 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Menu } from "lucide-react";
+import { BrandMark } from "./brand-mark";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+  SheetClose,
+} from "@/components/ui/sheet";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { cn } from "@/lib/utils";
+import { learnLinks, practiceLinks, primaryNav } from "@/data/navigation";
+
+export function SiteHeader() {
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
+
+  return (
+    <header
+      className={cn(
+        "sticky top-0 z-40 border-b transition-colors duration-200",
+        scrolled ? "border-line bg-paper/90 backdrop-blur-md" : "border-transparent bg-paper"
+      )}
+    >
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <BrandMark />
+
+        <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button
+                className={cn(
+                  "rounded-full px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:bg-paper-dim hover:text-ink",
+                  isActive("/practice") && "text-teal-700"
+                )}
+              >
+                Practice
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-72">
+              {practiceLinks.map((link) => (
+                <DropdownMenuItem key={link.href} asChild>
+                  <Link href={link.href} className="flex flex-col items-start gap-0.5 py-2.5">
+                    <span className="font-medium text-ink">{link.label}</span>
+                    {link.description && (
+                      <span className="text-xs text-ink-faint">{link.description}</span>
+                    )}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button className="rounded-full px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:bg-paper-dim hover:text-ink">
+                Learn
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-72">
+              {learnLinks.map((link) => (
+                <DropdownMenuItem key={link.href} asChild>
+                  <Link href={link.href} className="flex flex-col items-start gap-0.5 py-2.5">
+                    <span className="font-medium text-ink">{link.label}</span>
+                    {link.description && (
+                      <span className="text-xs text-ink-faint">{link.description}</span>
+                    )}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          <Link
+            href="/premium"
+            className={cn(
+              "rounded-full px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:bg-paper-dim hover:text-ink",
+              isActive("/premium") && "text-teal-700"
+            )}
+          >
+            Premium
+          </Link>
+          <Link
+            href="/dashboard"
+            className={cn(
+              "rounded-full px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:bg-paper-dim hover:text-ink",
+              isActive("/dashboard") && "text-teal-700"
+            )}
+          >
+            Dashboard
+          </Link>
+        </nav>
+
+        <div className="hidden items-center gap-3 lg:flex">
+          <Button asChild variant="ghost" size="sm">
+            <Link href="/dashboard">Sign in</Link>
+          </Button>
+          <Button asChild variant="primary" size="sm">
+            <Link href="/practice/free">Start free practice</Link>
+          </Button>
+        </div>
+
+        <Sheet open={open} onOpenChange={setOpen}>
+          <SheetTrigger asChild>
+            <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Open menu">
+              <Menu className="h-5 w-5" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="right" className="flex w-full max-w-sm flex-col gap-6">
+            <SheetHeader>
+              <SheetTitle>
+                <BrandMark />
+              </SheetTitle>
+            </SheetHeader>
+            <nav aria-label="Mobile" className="flex flex-1 flex-col gap-1 overflow-y-auto">
+              <p className="px-2 pt-2 text-xs font-medium uppercase tracking-wide text-ink-faint">
+                Practice
+              </p>
+              {practiceLinks.map((link) => (
+                <SheetClose asChild key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="rounded-[var(--radius-md)] px-2 py-3 text-base font-medium text-ink hover:bg-paper-dim"
+                  >
+                    {link.label}
+                  </Link>
+                </SheetClose>
+              ))}
+              <p className="px-2 pt-4 text-xs font-medium uppercase tracking-wide text-ink-faint">
+                Learn
+              </p>
+              {learnLinks.map((link) => (
+                <SheetClose asChild key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="rounded-[var(--radius-md)] px-2 py-3 text-base font-medium text-ink hover:bg-paper-dim"
+                  >
+                    {link.label}
+                  </Link>
+                </SheetClose>
+              ))}
+              <p className="px-2 pt-4 text-xs font-medium uppercase tracking-wide text-ink-faint">
+                CivicsWise
+              </p>
+              {primaryNav
+                .filter((l) => l.label === "Premium")
+                .concat([{ label: "Dashboard", href: "/dashboard" }])
+                .map((link) => (
+                  <SheetClose asChild key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="rounded-[var(--radius-md)] px-2 py-3 text-base font-medium text-ink hover:bg-paper-dim"
+                    >
+                      {link.label}
+                    </Link>
+                  </SheetClose>
+                ))}
+            </nav>
+            <div className="flex flex-col gap-2 border-t border-line pt-4">
+              <Button asChild variant="outline">
+                <Link href="/dashboard">Sign in</Link>
+              </Button>
+              <Button asChild variant="primary">
+                <Link href="/practice/free">Start free practice</Link>
+              </Button>
+            </div>
+          </SheetContent>
+        </Sheet>
+      </div>
+    </header>
+  );
+}
