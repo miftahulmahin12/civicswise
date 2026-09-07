@@ -145,7 +145,7 @@ export default function DashboardPage() {
             <Link
               key={action.title}
               href={action.href}
-              className="flex flex-col justify-between gap-4 rounded-[var(--radius-lg)] border border-line bg-surface p-5 shadow-[var(--shadow-soft)] transition-shadow hover:shadow-[var(--shadow-raised)]"
+              className="flex flex-col justify-between gap-4 rounded-[var(--radius-lg)] border border-line bg-surface p-5 shadow-[var(--shadow-soft)] interactive-lift"
             >
               <div>
                 <h3 className="font-display text-base font-medium text-ink">{action.title}</h3>
