@@ -4,17 +4,17 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium transition-[background-color,color,box-shadow,transform] duration-150 ease-out disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 active:scale-[0.98]",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium transition-[background-color,color,box-shadow,transform] duration-150 ease-out disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 active:scale-[0.98] hover:-translate-y-0.5",
   {
     variants: {
       variant: {
-        default: "bg-ink text-paper hover:bg-teal-900 shadow-[var(--shadow-soft)]",
-        primary: "bg-teal-600 text-white hover:bg-teal-700 shadow-[var(--shadow-soft)]",
-        brass: "bg-brass-500 text-white hover:bg-brass-700 shadow-[var(--shadow-soft)]",
+        default: "bg-ink text-paper hover:bg-teal-900 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-raised)]",
+        primary: "bg-teal-600 text-white hover:bg-teal-700 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-raised)]",
+        brass: "bg-brass-500 text-white hover:bg-brass-700 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-raised)]",
         outline:
           "border border-line-strong bg-transparent text-ink hover:bg-paper-dim",
         ghost: "bg-transparent text-ink hover:bg-paper-dim",
-        link: "bg-transparent text-teal-700 underline-offset-4 hover:underline p-0 h-auto rounded-none",
+        link: "bg-transparent text-teal-700 underline-offset-4 hover:underline p-0 h-auto rounded-none hover:translate-y-0",
         destructive: "bg-danger-600 text-white hover:opacity-90",
       },
       size: {
