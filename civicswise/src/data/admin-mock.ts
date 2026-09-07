@@ -5,7 +5,14 @@ export const adminOverview = {
   pendingReviews: 7,
 };
 
-export const adminUsers = [
+export interface AdminUser {
+  name: string;
+  email: string;
+  plan: "Free" | "Premium";
+  status: "Active" | "Invited" | "Suspended";
+}
+
+export const adminUsers: AdminUser[] = [
   { name: "Amara Osei", email: "amara@example.com", plan: "Premium", status: "Active" },
   { name: "Diego Ramirez", email: "diego@example.com", plan: "Free", status: "Active" },
   { name: "Wei Zhang", email: "wei@example.com", plan: "Premium", status: "Active" },
