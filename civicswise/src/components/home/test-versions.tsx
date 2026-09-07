@@ -12,6 +12,7 @@ const versions = [
     stats: "128 questions · up to 20 asked · 12 correct to pass",
     body: "The test most applicants take today. Draws from the full 128-question bank, and answers to certain questions change as officeholders change.",
     span: "lg:col-span-2",
+    featured: true,
   },
   {
     href: "/2008-civics-test",
@@ -36,6 +37,7 @@ const versions = [
     stats: "Search, filter, and study by category",
     body: "Every question in one browsable place, with dynamic-answer and 65/20 indicators built in.",
     span: "lg:col-span-2",
+    featured: false,
   },
 ];
 
@@ -52,7 +54,11 @@ export function TestVersions() {
             <ScrollReveal key={version.href} className={version.span} y={20}>
               <Link
                 href={version.href}
-                className="group flex h-full flex-col justify-between gap-6 rounded-[var(--radius-lg)] border border-line bg-surface p-7 shadow-[var(--shadow-soft)] transition-shadow hover:shadow-[var(--shadow-raised)]"
+                className={
+                  version.featured
+                    ? "group glass-surface interactive-lift flex h-full flex-col justify-between gap-6 rounded-[var(--radius-lg)] p-7"
+                    : "group flex h-full flex-col justify-between gap-6 rounded-[var(--radius-lg)] border border-line bg-surface p-7 shadow-[var(--shadow-soft)] interactive-lift"
+                }
               >
                 <div className="flex flex-col gap-3">
                   <div className="flex items-center justify-between">
