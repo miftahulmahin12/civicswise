@@ -32,6 +32,11 @@
   --surface: #FFFFFF;
   --overlay: rgba(20, 32, 51, 0.55);
 
+  /* Fixed tokens: intentionally constant in both themes (e.g. the always-
+     dark CTA section, the always-dark default button) — never flip these. */
+  --ink-fixed: #142033;
+  --paper-fixed: #faf8f3;
+
   --radius-sm: 0.5rem;
   --radius-md: 0.875rem;
   --radius-lg: 1.375rem;
@@ -42,6 +47,50 @@
 
   --background: var(--paper);
   --foreground: var(--ink);
+
+  color-scheme: light;
+}
+
+.dark {
+  /* ---- Dark theme: "Civic Ledger" at night ----
+     Same relationships (paper=page bg, ink=primary text, teal/brass=accents)
+     re-tuned for dark backgrounds and WCAG-friendly contrast. */
+  --paper: #10161F;
+  --paper-dim: #171E29;
+  --ink: #EDEAE0;
+  --ink-soft: #B9C2CC;
+  --ink-faint: #7E8B99;
+  --line: rgba(255, 255, 255, 0.1);
+  --line-strong: rgba(255, 255, 255, 0.18);
+
+  --teal-900: #C9EEE7;
+  --teal-700: #7FDCC9;
+  --teal-600: #1C8F7C;
+  --teal-500: #38A98F;
+  --teal-100: rgba(79, 199, 176, 0.22);
+
+  --brass-700: #F0D9A6;
+  --brass-500: #A8791F;
+  --brass-400: #E2C27E;
+  --brass-100: rgba(217, 174, 92, 0.22);
+
+  --success-600: #5FCB8F;
+  --success-100: rgba(95, 203, 143, 0.22);
+  --warning-600: #E3AC5A;
+  --warning-100: rgba(227, 172, 90, 0.22);
+  --danger-600: #E0655A;
+  --danger-100: rgba(232, 138, 131, 0.24);
+
+  --surface: #161D27;
+  --overlay: rgba(3, 6, 10, 0.7);
+
+  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.35), 0 8px 24px -12px rgba(0, 0, 0, 0.55);
+  --shadow-raised: 0 2px 4px rgba(0, 0, 0, 0.4), 0 20px 48px -16px rgba(0, 0, 0, 0.65);
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+
+  color-scheme: dark;
 }
 
 @theme inline {
@@ -52,6 +101,8 @@
   --color-ink-faint: var(--ink-faint);
   --color-line: var(--line);
   --color-line-strong: var(--line-strong);
+  --color-ink-fixed: var(--ink-fixed);
+  --color-paper-fixed: var(--paper-fixed);
 
   --color-teal-900: var(--teal-900);
   --color-teal-700: var(--teal-700);
@@ -92,6 +143,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 ::selection {
@@ -119,6 +171,10 @@ body {
   background-size: 18px 18px;
 }
 
+.dark .bg-grain {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.07) 1px, transparent 0);
+}
+
 .text-balance {
   text-wrap: balance;
 }
@@ -136,7 +192,6 @@ body {
    cards), and .glass-surface-modal for dialogs/sheets, which carry body
    copy and need to stay fully legible regardless of what's behind them. */
 .glass-surface {
-  position: relative;
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.68));
   backdrop-filter: blur(36px) saturate(180%);
   -webkit-backdrop-filter: blur(36px) saturate(180%);
@@ -179,6 +234,29 @@ body {
     0 24px 48px -20px rgba(0, 0, 0, 0.6);
 }
 
+/* In dark mode, the light-glass tiers automatically become dark glass so
+   nothing needs conditional classes in components. */
+.dark .glass-surface {
+  background: linear-gradient(160deg, rgba(30, 38, 48, 0.82), rgba(20, 27, 35, 0.68));
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 24px 48px -20px rgba(0, 0, 0, 0.6);
+}
+.dark .glass-surface::before {
+  background: radial-gradient(120% 80% at 15% 0%, rgba(255, 255, 255, 0.08), transparent 60%);
+}
+.dark .glass-surface-modal {
+  background: linear-gradient(160deg, rgba(22, 29, 38, 0.97), rgba(16, 22, 30, 0.93));
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 32px 64px -24px rgba(0, 0, 0, 0.7);
+}
+
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .glass-surface,
   .glass-surface-modal {
@@ -186,6 +264,10 @@ body {
   }
   .glass-surface-dark {
     background: rgba(20, 32, 51, 0.94);
+  }
+  .dark .glass-surface,
+  .dark .glass-surface-modal {
+    background: rgba(16, 22, 30, 0.96);
   }
 }
 
