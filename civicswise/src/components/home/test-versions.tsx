@@ -56,7 +56,7 @@ export function TestVersions() {
                 href={version.href}
                 className={
                   version.featured
-                    ? "group glass-surface interactive-lift flex h-full flex-col justify-between gap-6 rounded-[var(--radius-lg)] p-7"
+                    ? "group relative glass-surface interactive-lift flex h-full flex-col justify-between gap-6 rounded-[var(--radius-lg)] p-7"
                     : "group flex h-full flex-col justify-between gap-6 rounded-[var(--radius-lg)] border border-line bg-surface p-7 shadow-[var(--shadow-soft)] interactive-lift"
                 }
               >
