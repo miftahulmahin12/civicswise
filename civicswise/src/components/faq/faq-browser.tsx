@@ -47,7 +47,7 @@ export function FaqBrowser() {
           onClick={() => setActiveTopic("all")}
           className={
             activeTopic === "all"
-              ? "rounded-full bg-ink px-3.5 py-1.5 text-xs font-medium text-paper"
+              ? "rounded-full bg-ink-fixed px-3.5 py-1.5 text-xs font-medium text-paper-fixed"
               : "rounded-full border border-line-strong px-3.5 py-1.5 text-xs font-medium text-ink-soft hover:bg-paper-dim"
           }
         >
@@ -59,7 +59,7 @@ export function FaqBrowser() {
             onClick={() => setActiveTopic(topic)}
             className={
               activeTopic === topic
-                ? "rounded-full bg-ink px-3.5 py-1.5 text-xs font-medium text-paper"
+                ? "rounded-full bg-ink-fixed px-3.5 py-1.5 text-xs font-medium text-paper-fixed"
                 : "rounded-full border border-line-strong px-3.5 py-1.5 text-xs font-medium text-ink-soft hover:bg-paper-dim"
             }
           >
