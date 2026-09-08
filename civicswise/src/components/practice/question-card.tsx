@@ -26,7 +26,7 @@ export function QuestionCard({
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: -16 }}
         transition={{ duration: 0.25, ease: "easeOut" }}
-        className="glass-surface rounded-[var(--radius-xl)] p-6 sm:p-8"
+        className="relative glass-surface rounded-[var(--radius-xl)] p-6 sm:p-8"
       >
         <div className="mb-5 flex flex-wrap items-center gap-2">
           {question.isDynamic && <Badge variant="warning">Dynamic answer</Badge>}
