@@ -8,7 +8,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-ink text-paper hover:bg-teal-900 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-raised)]",
+        default: "bg-ink-fixed text-paper-fixed hover:bg-teal-900 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-raised)]",
         primary: "bg-teal-600 text-white hover:bg-teal-700 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-raised)]",
         brass: "bg-brass-500 text-white hover:bg-brass-700 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-raised)]",
         outline:
