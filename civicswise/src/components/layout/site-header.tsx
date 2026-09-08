@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import { learnLinks, practiceLinks, primaryNav } from "@/data/navigation";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const navLinkClass =
   "relative rounded-full px-4 py-2 text-sm font-medium text-ink-soft transition-colors after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[2px] after:origin-left after:scale-x-0 after:bg-teal-600 after:transition-transform after:duration-200 hover:text-ink hover:after:scale-x-100";
@@ -110,7 +111,8 @@ export function SiteHeader() {
           </Link>
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-2 lg:flex">
+          <ThemeToggle />
           <Button asChild variant="ghost" size="sm">
             <Link href="/dashboard">Sign in</Link>
           </Button>
@@ -119,15 +121,17 @@ export function SiteHeader() {
           </Button>
         </div>
 
-        <Sheet open={open} onOpenChange={setOpen}>
-          <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Open menu">
-              <Menu className="h-5 w-5" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right" className="flex w-full max-w-sm flex-col gap-6">
-            <SheetHeader>
-              <SheetTitle>
+        <div className="flex items-center gap-1 lg:hidden">
+          <ThemeToggle />
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" aria-label="Open menu">
+                <Menu className="h-5 w-5" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="flex w-full max-w-sm flex-col gap-6">
+              <SheetHeader>
+                <SheetTitle>
                 <BrandMark />
               </SheetTitle>
             </SheetHeader>
@@ -184,7 +188,8 @@ export function SiteHeader() {
               </Button>
             </div>
           </SheetContent>
-        </Sheet>
+          </Sheet>
+        </div>
       </div>
     </header>
   );
