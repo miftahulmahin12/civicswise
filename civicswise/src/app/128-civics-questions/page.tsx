@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+
 import { PageHero } from "@/components/marketing/page-hero";
 import { QuestionBankBrowser } from "@/components/categories/question-bank-browser";
 import { Button } from "@/components/ui/button";
@@ -27,7 +27,6 @@ export default function QuestionBankPage() {
           <Button asChild variant="outline">
             <Link href="/study-guide">
               Not sure where to start? Read the study guide
-              <ArrowRight />
             </Link>
           </Button>
         </div>
