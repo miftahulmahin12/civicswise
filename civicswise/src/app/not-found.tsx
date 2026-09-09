@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Compass } from "lucide-react";
+import { Compass } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
@@ -17,7 +17,6 @@ export default function NotFound() {
         <Button asChild variant="primary">
           <Link href="/practice/free">
             Start a practice test
-            <ArrowRight />
           </Link>
         </Button>
         <Button asChild variant="outline">
