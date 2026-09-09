@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/marketing/page-hero";
 import { StatPills } from "@/components/marketing/stat-pills";
 import { SectionHeading } from "@/components/marketing/section-heading";
-import { ScrollReveal } from "@/components/marketing/scroll-reveal";
 import { Badge } from "@/components/ui/badge";
 
 export const metadata: Metadata = {
@@ -67,8 +66,7 @@ export default function CivicsTest2008Page() {
       </section>
 
       <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
-        <ScrollReveal>
-          <div className="paper-card flex flex-col gap-3 rounded-[var(--radius-lg)] p-7">
+                  <div className="paper-card flex flex-col gap-3 rounded-[var(--radius-lg)] p-7">
             <Badge variant="outline" className="w-fit">
               Good to know
             </Badge>
@@ -81,8 +79,7 @@ export default function CivicsTest2008Page() {
               resources or ask at your interview.
             </p>
           </div>
-        </ScrollReveal>
-      </section>
+              </section>
     </>
   );
 }
