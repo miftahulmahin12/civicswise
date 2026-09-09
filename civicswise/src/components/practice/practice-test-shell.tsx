@@ -82,7 +82,7 @@ export function PracticeTestShell({
       </div>
 
       <div className="border-t border-line pt-5">
-        <p className="mb-3 text-xs font-medium uppercase tracking-wide text-ink-faint">
+        <p className="mb-3 text-xs font-medium text-ink-faint">
           Jump to a question
         </p>
         <QuestionNavigator
