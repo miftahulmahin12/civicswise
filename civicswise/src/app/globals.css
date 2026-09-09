@@ -26,7 +26,7 @@
   --success-100: #E4F3E9;
   --warning-600: #A46A1F;
   --warning-100: #FBEFDC;
-  --danger-600: #A3352F;
+  --danger-600: #A3352F; 
   --danger-100: #FBE7E4;
 
   --surface: #FFFFFF;
@@ -313,3 +313,66 @@ body {
   100% { transform: scale(1); opacity: 1; }
 }
 .animate-pop-in { animation: pop-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+/* ---- Hero ambient gradient blobs ----
+   Large, slow-moving, heavily blurred color fields behind the hero. Their
+   only job is to give the liquid-glass card something colorful and alive
+   to blur — a flat page background makes "glass" read as just a translucent
+   grey box, which is what was happening before. */
+.hero-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.55;
+  will-change: transform;
+}
+.hero-blob-1 {
+  top: -10%;
+  left: 5%;
+  width: 34rem;
+  height: 34rem;
+  background: radial-gradient(circle at 30% 30%, var(--teal-500), transparent 70%);
+  animation: blob-drift-a 22s ease-in-out infinite;
+}
+.hero-blob-2 {
+  top: 10%;
+  right: -8%;
+  width: 28rem;
+  height: 28rem;
+  background: radial-gradient(circle at 60% 40%, var(--brass-400), transparent 70%);
+  animation: blob-drift-b 26s ease-in-out infinite;
+  animation-delay: -6s;
+}
+.hero-blob-3 {
+  bottom: -18%;
+  left: 30%;
+  width: 30rem;
+  height: 30rem;
+  background: radial-gradient(circle at 50% 50%, var(--teal-700), transparent 70%);
+  animation: blob-drift-c 30s ease-in-out infinite;
+  animation-delay: -12s;
+}
+
+@keyframes blob-drift-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(4%, 6%) scale(1.08); }
+  66% { transform: translate(-3%, -4%) scale(0.95); }
+}
+@keyframes blob-drift-b {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-5%, 5%) scale(0.92); }
+  66% { transform: translate(3%, -6%) scale(1.1); }
+}
+@keyframes blob-drift-c {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-4%, -8%) scale(1.06); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-blob { animation: none !important; }
+}
+
+.dark .hero-blob {
+  opacity: 0.4;
+  filter: blur(100px);
+}
