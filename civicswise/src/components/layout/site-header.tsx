@@ -136,7 +136,7 @@ export function SiteHeader() {
               </SheetTitle>
             </SheetHeader>
             <nav aria-label="Mobile" className="flex flex-1 flex-col gap-1 overflow-y-auto">
-              <p className="px-2 pt-2 text-xs font-medium uppercase tracking-wide text-ink-faint">
+              <p className="px-2 pt-2 text-xs font-medium text-ink-faint">
                 Practice
               </p>
               {practiceLinks.map((link) => (
@@ -149,7 +149,7 @@ export function SiteHeader() {
                   </Link>
                 </SheetClose>
               ))}
-              <p className="px-2 pt-4 text-xs font-medium uppercase tracking-wide text-ink-faint">
+              <p className="px-2 pt-4 text-xs font-medium text-ink-faint">
                 Learn
               </p>
               {learnLinks.map((link) => (
@@ -162,7 +162,7 @@ export function SiteHeader() {
                   </Link>
                 </SheetClose>
               ))}
-              <p className="px-2 pt-4 text-xs font-medium uppercase tracking-wide text-ink-faint">
+              <p className="px-2 pt-4 text-xs font-medium text-ink-faint">
                 CivicsWise
               </p>
               {primaryNav
