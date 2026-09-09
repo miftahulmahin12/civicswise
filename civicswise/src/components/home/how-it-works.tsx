@@ -1,6 +1,5 @@
 import { ClipboardList, Repeat, TrendingUp } from "lucide-react";
 import { SectionHeading } from "@/components/marketing/section-heading";
-import { ScrollReveal } from "@/components/marketing/scroll-reveal";
 
 const steps = [
   {
@@ -30,20 +29,21 @@ export function HowItWorks() {
         />
         <div className="mt-12 grid gap-6 sm:grid-cols-3">
           {steps.map((step, index) => (
-            <ScrollReveal key={step.title} y={20}>
-              <div className="paper-card flex h-full flex-col gap-4 rounded-[var(--radius-lg)] p-6">
-                <div className="flex items-center justify-between">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-teal-100 text-teal-800">
-                    <step.icon className="h-5 w-5" />
-                  </span>
-                  <span className="font-display text-sm text-ink-faint">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                </div>
-                <h3 className="font-display text-lg font-medium text-ink">{step.title}</h3>
-                <p className="text-sm leading-relaxed text-ink-faint">{step.body}</p>
+            <div
+              key={step.title}
+              className="paper-card flex h-full flex-col gap-4 rounded-[var(--radius-lg)] p-6"
+            >
+              <div className="flex items-center justify-between">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-teal-100 text-teal-800">
+                  <step.icon className="h-5 w-5" />
+                </span>
+                <span className="font-display text-sm text-ink-faint">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
               </div>
-            </ScrollReveal>
+              <h3 className="font-display text-lg font-medium text-ink">{step.title}</h3>
+              <p className="text-sm leading-relaxed text-ink-faint">{step.body}</p>
+            </div>
           ))}
         </div>
       </div>
