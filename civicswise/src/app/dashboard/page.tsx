@@ -1,13 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  ArrowRight,
-  BookOpenCheck,
-  Flame,
-  ListChecks,
-  Target,
-  TrendingUp,
-} from "lucide-react";
+import { BookOpenCheck, Flame, ListChecks, Target, TrendingUp } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { AvatarInitials } from "@/components/ui/avatar-initials";
@@ -44,7 +37,6 @@ export default function DashboardPage() {
         <Button asChild variant="primary" size="lg">
           <Link href="/practice/free">
             Continue practicing
-            <ArrowRight />
           </Link>
         </Button>
       </div>
@@ -153,7 +145,6 @@ export default function DashboardPage() {
               </div>
               <span className="flex items-center gap-1 text-sm font-medium text-teal-700">
                 Go
-                <ArrowRight className="h-4 w-4" />
               </span>
             </Link>
           ))}
