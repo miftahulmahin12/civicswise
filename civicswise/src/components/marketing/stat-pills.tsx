@@ -15,7 +15,7 @@ export function StatPills({
             i === 0 && "border-teal-600/40 bg-teal-100/50"
           )}
         >
-          <dt className="text-xs font-medium uppercase tracking-wide text-ink-faint">
+          <dt className="text-xs font-medium text-ink-faint">
             {item.label}
           </dt>
           <dd className="font-display text-2xl font-medium text-ink">{item.value}</dd>
