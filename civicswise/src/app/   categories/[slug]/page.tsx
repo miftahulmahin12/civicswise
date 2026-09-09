@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { categories, getCategory } from "@/data/categories";
@@ -57,7 +57,6 @@ export default async function CategoryPage({
             <Button asChild variant="primary">
               <Link href="/practice/free">
                 Practice this category
-                <ArrowRight />
               </Link>
             </Button>
             <Badge variant="outline">{categoryQuestions.length} sample questions here</Badge>
