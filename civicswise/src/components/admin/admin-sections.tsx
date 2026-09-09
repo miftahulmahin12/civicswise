@@ -177,7 +177,7 @@ export function CategoriesSection() {
         >
           <div>
             <p className="font-medium text-ink">{c.name}</p>
-            <p className="text-xs text-ink-faint">{c.questionCount} questions · {c.section}</p>
+            <p className="text-xs text-ink-faint">{c.questionCount} questions in {c.section}</p>
           </div>
           <Button variant="ghost" size="sm">
             Manage
@@ -199,7 +199,7 @@ export function PracticePoolsSection() {
           <div>
             <p className="font-medium text-ink">{pool.name}</p>
             <p className="text-xs text-ink-faint">
-              {pool.questions} questions · {pool.source}
+              {pool.questions} questions, from {pool.source}
             </p>
           </div>
           <Button variant="outline" size="sm">
