@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Check, Minus } from "lucide-react";
 import { SectionHeading } from "@/components/marketing/section-heading";
-import { ScrollReveal } from "@/components/marketing/scroll-reveal";
 import { Button } from "@/components/ui/button";
 
 const rows: [string, boolean, boolean][] = [
@@ -30,8 +29,7 @@ export function FreeVsPremium() {
           </Button>
         </div>
 
-        <ScrollReveal className="mt-12">
-          <div className="overflow-hidden rounded-[var(--radius-lg)] border border-line bg-surface shadow-[var(--shadow-soft)]">
+        <div className="mt-12 overflow-hidden rounded-[var(--radius-lg)] border border-line bg-surface shadow-[var(--shadow-soft)]">
             <div className="grid grid-cols-[1fr_auto_auto] items-center gap-4 border-b border-line px-6 py-4 text-sm font-medium text-ink-faint sm:gap-8 sm:px-8">
               <span>Feature</span>
               <span className="w-16 text-center sm:w-24">Free</span>
@@ -59,8 +57,7 @@ export function FreeVsPremium() {
                 </span>
               </div>
             ))}
-          </div>
-        </ScrollReveal>
+        </div>
       </div>
     </section>
   );
