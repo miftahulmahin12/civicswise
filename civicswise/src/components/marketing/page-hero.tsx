@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
@@ -36,7 +36,6 @@ export function PageHero({
           <Button asChild size="lg" variant="primary">
             <Link href={primaryHref}>
               {primaryLabel}
-              <ArrowRight />
             </Link>
           </Button>
           {secondaryHref && secondaryLabel && (
