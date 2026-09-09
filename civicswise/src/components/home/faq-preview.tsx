@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+
 import { SectionHeading } from "@/components/marketing/section-heading";
 import {
   Accordion,
@@ -35,7 +35,6 @@ export function FaqPreview() {
           <Button asChild variant="outline">
             <Link href="/faq">
               See all questions
-              <ArrowRight />
             </Link>
           </Button>
         </div>
