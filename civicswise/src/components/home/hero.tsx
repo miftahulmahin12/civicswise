@@ -2,10 +2,11 @@
 
 import { useLayoutEffect, useRef } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { HeroDemoCard } from "./hero-demo-card";
+import { HeroGradientBackground } from "./hero-gradient-background";
 
 export function Hero() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -41,7 +42,8 @@ export function Hero() {
 
   return (
     <section ref={rootRef} className="relative overflow-hidden bg-paper">
-      <div className="pointer-events-none absolute inset-0 bg-grain opacity-[0.35]" />
+      <HeroGradientBackground />
+      <div className="pointer-events-none absolute inset-0 bg-grain opacity-[0.2]" />
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-8 lg:py-24">
         <div className="flex flex-col gap-6">
           <span
@@ -66,7 +68,6 @@ export function Hero() {
             <Button asChild size="lg" variant="primary">
               <Link href="/practice/free">
                 Start a free practice test
-                <ArrowRight />
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline">
