@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+
 import { PageHero } from "@/components/marketing/page-hero";
 import { SectionHeading } from "@/components/marketing/section-heading";
 import { Badge } from "@/components/ui/badge";
@@ -69,7 +69,6 @@ export default function SixtyFiveTwentyPage() {
             <Button asChild variant="primary">
               <Link href="/practice/free">
                 Start practicing this list
-                <ArrowRight />
               </Link>
             </Button>
           </div>
