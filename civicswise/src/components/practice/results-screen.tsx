@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
-import { ArrowRight, RotateCcw, Trophy } from "lucide-react";
+import { RotateCcw, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { categories } from "@/data/categories";
@@ -71,7 +71,6 @@ export function ResultsScreen({
           <Button asChild variant="outline">
             <Link href="/dashboard">
               View my dashboard
-              <ArrowRight />
             </Link>
           </Button>
         </div>
