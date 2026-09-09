@@ -1,24 +1,24 @@
 import type { Metadata } from "next";
+import { Public_Sans, Fraunces } from "next/font/google";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SiteLoader } from "@/components/site-loader";
 import "./globals.css";
 
-/**
- * Font loading note: this build environment has no outbound access to
- * fonts.googleapis.com, so next/font/google cannot fetch Public Sans or
- * Fraunces at build time here. The type scale, weights, and layout are all
- * designed around those two families (a humanist sans for UI copy and a
- * high-contrast serif for display headings) — swap the block below back to
- * `next/font/google` the moment you build somewhere with internet access
- * and the visual design will pick them up with no other changes needed:
- *
- *   import { Public_Sans, Fraunces } from "next/font/google";
- *   const publicSans = Public_Sans({ variable: "--font-public-sans", subsets: ["latin"] });
- *   const fraunces = Fraunces({ variable: "--font-fraunces", subsets: ["latin"], axes: ["opsz","SOFT","WONK"] });
- *   ...and apply `${publicSans.variable} ${fraunces.variable}` on <html> below.
- */
+const publicSans = Public_Sans({
+  variable: "--font-public-sans",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  axes: ["opsz", "SOFT", "WONK"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://civicswise.example.com"),
@@ -45,9 +45,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="h-full" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${publicSans.variable} ${fraunces.variable} h-full`}
+      suppressHydrationWarning
+    >
       <body className="min-h-full flex flex-col bg-paper text-ink antialiased">
         <ThemeProvider>
+          <SiteLoader />
           <a
             href="#main-content"
             className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-ink-fixed focus:px-4 focus:py-2 focus:text-paper-fixed"
