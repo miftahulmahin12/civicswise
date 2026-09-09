@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, RefreshCcw, ShieldCheck, Timer } from "lucide-react";
+import { RefreshCcw, ShieldCheck, Timer } from "lucide-react";
 import { PageHero } from "@/components/marketing/page-hero";
 import { StatPills } from "@/components/marketing/stat-pills";
 import { SectionHeading } from "@/components/marketing/section-heading";
-import { ScrollReveal } from "@/components/marketing/scroll-reveal";
 import { Button } from "@/components/ui/button";
 import { getSixtyFiveTwentyQuestions, questions } from "@/data/questions";
 
@@ -48,8 +47,7 @@ export default function CivicsTest2025Page() {
             description="The civics test is one part of your naturalization interview, and it happens the same way for almost every applicant taking the 2025 version."
           />
           <div className="mt-10 grid gap-5 sm:grid-cols-3">
-            <ScrollReveal y={16}>
-              <div className="paper-card flex h-full flex-col gap-3 rounded-[var(--radius-lg)] p-6">
+                          <div className="paper-card flex h-full flex-col gap-3 rounded-[var(--radius-lg)] p-6">
                 <Timer className="h-5 w-5 text-teal-700" />
                 <h3 className="font-display text-lg font-medium text-ink">It's spoken, not written</h3>
                 <p className="text-sm leading-relaxed text-ink-faint">
@@ -57,9 +55,7 @@ export default function CivicsTest2025Page() {
                   verbally — there's no written exam or multiple choice in the real test.
                 </p>
               </div>
-            </ScrollReveal>
-            <ScrollReveal y={16}>
-              <div className="paper-card flex h-full flex-col gap-3 rounded-[var(--radius-lg)] p-6">
+                                      <div className="paper-card flex h-full flex-col gap-3 rounded-[var(--radius-lg)] p-6">
                 <ShieldCheck className="h-5 w-5 text-teal-700" />
                 <h3 className="font-display text-lg font-medium text-ink">Stops once you pass</h3>
                 <p className="text-sm leading-relaxed text-ink-faint">
@@ -67,9 +63,7 @@ export default function CivicsTest2025Page() {
                   out of the 20 you could be asked.
                 </p>
               </div>
-            </ScrollReveal>
-            <ScrollReveal y={16}>
-              <div className="paper-card flex h-full flex-col gap-3 rounded-[var(--radius-lg)] p-6">
+                                      <div className="paper-card flex h-full flex-col gap-3 rounded-[var(--radius-lg)] p-6">
                 <RefreshCcw className="h-5 w-5 text-teal-700" />
                 <h3 className="font-display text-lg font-medium text-ink">Some answers change</h3>
                 <p className="text-sm leading-relaxed text-ink-faint">
@@ -77,8 +71,7 @@ export default function CivicsTest2025Page() {
                   dynamic so you know to double check them closer to your interview.
                 </p>
               </div>
-            </ScrollReveal>
-          </div>
+                      </div>
         </div>
       </section>
 
@@ -96,7 +89,6 @@ export default function CivicsTest2025Page() {
             <Button asChild variant="outline" className="mt-4">
               <Link href="/65-20-test">
                 See the 65/20 test
-                <ArrowRight />
               </Link>
             </Button>
           </div>
@@ -109,7 +101,6 @@ export default function CivicsTest2025Page() {
             <Button asChild variant="outline" className="mt-4">
               <a href="https://www.uscis.gov/citizenship" target="_blank" rel="noreferrer">
                 Visit uscis.gov
-                <ArrowRight />
               </a>
             </Button>
           </div>
