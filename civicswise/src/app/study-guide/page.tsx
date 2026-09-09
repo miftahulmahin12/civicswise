@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Calendar, ListChecks, RefreshCcw, Target } from "lucide-react";
+import { BookOpen, Calendar, ListChecks, RefreshCcw, Target } from "lucide-react";
 import { PageHero } from "@/components/marketing/page-hero";
 import { SectionHeading } from "@/components/marketing/section-heading";
-import { ScrollReveal } from "@/components/marketing/scroll-reveal";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
@@ -84,8 +83,7 @@ export default function StudyGuidePage() {
           />
           <div className="relative mt-10 flex flex-col gap-8 border-l border-line pl-8">
             {timeline.map((step) => (
-              <ScrollReveal key={step.title} y={16}>
-                <div className="relative">
+              <div key={step.title} className="relative">
                   <span className="absolute -left-[38px] top-1 flex h-4 w-4 items-center justify-center rounded-full border-2 border-teal-600 bg-paper-dim" />
                   <Badge variant="teal" className="mb-2 w-fit">
                     {step.week}
@@ -95,8 +93,7 @@ export default function StudyGuidePage() {
                     {step.body}
                   </p>
                 </div>
-              </ScrollReveal>
-            ))}
+                          ))}
           </div>
         </div>
       </section>
@@ -136,7 +133,6 @@ export default function StudyGuidePage() {
           <Button asChild variant="primary" size="lg">
             <Link href="/practice/free">
               Put this plan into practice
-              <ArrowRight />
             </Link>
           </Button>
         </div>
