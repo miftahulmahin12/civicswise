@@ -53,7 +53,7 @@ export function HeroDemoCard() {
     <div className="relative">
       <div className="glass-surface relative overflow-hidden rounded-[var(--radius-xl)] p-6 sm:p-8">
         <div className="flex items-center justify-between border-b border-line/70 pb-4">
-          <span className="text-xs font-medium uppercase tracking-wide text-ink-faint">
+          <span className="text-xs font-medium text-ink-faint">
             Question {current.index} of 20
           </span>
           <motion.span
