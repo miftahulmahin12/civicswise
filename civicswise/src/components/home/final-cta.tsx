@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 
 export function FinalCta() {
@@ -17,7 +17,6 @@ export function FinalCta() {
           <Button asChild size="lg" variant="primary">
             <Link href="/practice/free">
               Start practicing now
-              <ArrowRight />
             </Link>
           </Button>
           <Button
