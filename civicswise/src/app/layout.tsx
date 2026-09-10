@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Public_Sans, Fraunces } from "next/font/google";
+import Script from "next/script";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { Toaster } from "@/components/ui/sonner";
@@ -51,6 +52,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-paper text-ink antialiased">
+        <Script id="skip-intro-check" strategy="beforeInteractive">
+          {`try {
+            if (sessionStorage.getItem('civicswise-intro-seen') === '1') {
+              document.documentElement.setAttribute('data-skip-intro', 'true');
+            }
+          } catch (e) {}`}
+        </Script>
         <ThemeProvider>
           <SiteLoader />
           <a
