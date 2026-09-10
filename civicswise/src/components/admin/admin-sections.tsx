@@ -140,7 +140,7 @@ export function QuestionsSection() {
           </thead>
           <tbody>
             {filtered.slice(0, 12).map((q) => (
-              <tr key={q.id} className="border-t border-line">
+              <tr key={q.id} className="border-t border-line transition-colors duration-200 hover:bg-paper-dim">
                 <td className="px-4 py-3 text-ink-faint">{q.number}</td>
                 <td className="max-w-xs truncate px-4 py-3 text-ink">{q.question}</td>
                 <td className="px-4 py-3 text-ink-soft">{q.category}</td>
@@ -368,7 +368,7 @@ export function UsersSection() {
         </thead>
         <tbody>
           {adminUsers.map((user) => (
-            <tr key={user.email} className="border-t border-line">
+            <tr key={user.email} className="border-t border-line transition-colors duration-200 hover:bg-paper-dim">
               <td className="px-4 py-3 text-ink">{user.name}</td>
               <td className="px-4 py-3 text-ink-soft">{user.email}</td>
               <td className="px-4 py-3">
