@@ -66,7 +66,7 @@ export function QuestionBankBrowser() {
           className={
             dynamicOnly
               ? "shrink-0 rounded-full border border-warning-600 bg-warning-100 px-4 py-2.5 text-sm font-medium text-warning-600"
-              : "shrink-0 rounded-full border border-line-strong bg-surface px-4 py-2.5 text-sm font-medium text-ink-soft hover:bg-paper-dim"
+              : "shrink-0 rounded-full border border-line-strong bg-surface px-4 py-2.5 text-sm font-medium text-ink-soft transition-colors duration-200 hover:bg-paper-dim"
           }
         >
           Dynamic only
